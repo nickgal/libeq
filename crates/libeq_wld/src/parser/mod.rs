@@ -41,7 +41,7 @@ impl WldDoc {
             count(FragmentHeader::parse, header.fragment_count as usize)(i)
                 .map_err(|e| vec![e.into()])?;
 
-        let (fragments, _errors): (Vec<_>, Vec<_>) = fragment_headers
+        let (fragments, errors): (Vec<_>, Vec<_>) = fragment_headers
             .into_iter()
             .enumerate()
             .map(|(idx, h)| h.parse_body(idx))
